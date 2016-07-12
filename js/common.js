@@ -19,15 +19,23 @@ $(document).ready(function(){
 	 $(".feedback-form").submit(function() {
         $.ajax({
             type: "POST",
-            url: "formhandler.php",
+            // url: "mail.php"
             data: $(this).serialize(),
             success: function() {
-                alert('Ваша заявка принята. Наш менеджер свяжется с Вами в ближайшее время')
+                //alert('Ваша заявка принята. Наш менеджер свяжется с Вами в ближайшее время')
+                $.magnificPopup.open({
+                    items: {
+                        src: '.send-success',
+                        type: 'inline'
+                    }
+                });
                 $(this).find("input").val("");
                 $(".form-get-order").trigger("reset");
             }
         });
         return false;
     });
+
+    $('input[name="phone"]').mask("+7(999) 999-99-99");
 
 });
