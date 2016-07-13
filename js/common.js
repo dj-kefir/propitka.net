@@ -11,15 +11,15 @@ $(document).ready(function(){
 		type:"image",
 		gallery : {
 			enabled : true
-		},
+        }
 	});
 
 	$('.header__feedback').mPageScroll2id();
 
-	 $(".feedback-form").submit(function() {
+    $(".feedback-form").submit(function () {
         $.ajax({
             type: "POST",
-            // url: "mail.php"
+            url: "formhandler.php",
             data: $(this).serialize(),
             success: function() {
                 //alert('Ваша заявка принята. Наш менеджер свяжется с Вами в ближайшее время')
@@ -37,5 +37,10 @@ $(document).ready(function(){
     });
 
     $('input[name="phone"]').mask("+7(999) 999-99-99");
+
+    //$(".feedback-form__submit").click(function () {
+    //    yaCounter38468465.reachGoal('order');
+    //    return true;
+    //});
 
 });
